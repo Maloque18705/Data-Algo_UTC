@@ -4,109 +4,125 @@
 
 using namespace std;
 
-class Student
+class Car
 {
     private:
-        string name;            // Ten sinh vien
-        string studentID;       // Ma Sinh vien
-        int age;                // Tuoi
-        float point;            // Diem sinh vien
+        string brand;           // Ten thuong hieu
+        string model;           // Ten mau xe
+        string vin;             // So VIN cua xe
+        int year;               // Nam san xuat
+        float price;            // Gia xe
     public:
-        Student() : name(""), studentID(""), age(0), point(0.0) {}
-        Student(string n, int a, string id, float p): name(n), age(a), studentID(id), point(p) {}
-        friend istream& operator>>(istream& in, Student& s){
-            cout << "Ten sinh vien: ";
-            in.ignore();            //Loai bo ky tu xuong dong
-            getline(in, s.name);    //Cho phep dau cach trong ten
-            cout << "Ma sinh vien: "; in>> s.studentID;
-            cout << "Tuoi: "; in>> s.age;
-            cout << "Diem: "; in>> s.point;
+        Car() : brand(""), model(""), vin(""), year(0), price(0.0) {}
+        friend istream& operator>>(istream& in, Car& c){
+            cout << "Thuong hieu: ";
+            in.ignore();            // Loai bo ky tu xuong dong
+            getline(in, c.brand);   // Cho phep dau cach trong xau
+            cout << "Dong xe: ";
+            in.ignore();            // Loai bo ky tu xuong dong
+            getline(in, c.model);   // Cho phep dau cach trong xau
+            cout << "So VIN: "; in>> c.vin;
+            cout << "Nam san xuat: "; in>> c.year;
+            cout << "Gia: "; in>> c.price;
             return in;
         }
-        friend ostream& operator<<(ostream& out, const Student& s){
-            out << "Ten: " << s.name << endl;
-            out << "Ma sinh vien: " << s.studentID << endl;
-            out << "Tuoi: " << s.age << endl;
-            out << "Diem: " << s.point << endl;
+        friend ostream& operator<<(ostream& out, const Car& c){
+            out << "Thuong hieu: " << c.brand << endl;
+            out << "Dong xe: " << c.brand << endl;
+            out << "So VIN: " <<  c.vin << endl;
+            out << "Nam san xuat: " << c.year << endl;
+            out << "Gia: " << c.price << endl;
             return out;
         }
 
-        // Phuong thuc Get
-        string getName() const {return name; }
-        string getStudentID() const {return studentID; }
-        int getAge() const {return age; }
-        float getPoint() const {return point; }
+        string getBrand() const {return brand; }
+        string getModel() const {return model; }
+        string getVIN() const {return vin; }
+        int getYear() const {return year; }
+        float getPrice() const {return price; }
+        
 };
 
-class StudentList
+class CarList
 {
     private:
-        Student* students;
+        Car* cars;
         int size;
         int capacity;
 
         void expand(){
             capacity *=2;
-            Student* newArray = new Student[capacity];
-            for(int i = 0; i< size; ++i){
-                newArray[i] = students[i];
+            Car* newArray = new Car[capacity];
+            for (int i = 0; i < size; ++i){
+                newArray[i] = cars[i];
             }
-            delete[] students;
-            students = newArray;
+            delete[] cars;
+            cars = newArray;
         }
     public:
-        StudentList(int cap = 10): size(0), capacity(cap){
-            students = new Student[capacity];
+        CarList(int cap = 10): size(0), capacity(cap){
+            cars = new Car[capacity];
         }
 
-        ~StudentList() {delete[] students;}
+        ~CarList() {delete[] cars;}
 
-        void addStudent(const Student& s){
+        void addCar(const Car& c){
             if (size == capacity) expand();
-            students[size++] = s;
+                cars[size++] = c;
         }
 
-        void removeStudent(const string& studentID){
-            for(int i = 0; i<size; i++){
-                if(students[i].getStudentID() == studentID){
-                    for(int j = i;  j<size-1; ++j){
-                        students[j] = students[j+1];
+        void removeCar(const string& vin){
+            for (int i = 0; i<size; i++){
+                if(cars[i].getVIN() == vin){
+                    for (int j = i; j < size-1; ++j){
+                        cars[j] = cars[j+1];
                     }
                     --size;
                     break;
                 }
             }
         }
-
-        void display() const{
-            for (int i = 0; i<size; i++){
-                cout << students[i] << endl;
+        
+        void displayAll() const{
+            for (int i = 0; i < size; i++){
+                cout << cars[i] << endl;
             }
         }
-        void sortByPoint(){
-            for (int i = 0; i<size-1; ++i){
-                for (int j = 0; j<size-i-1; ++j){
-                    if(students[j].getPoint() > students[j+1].getPoint()){
-                        swap(students[j], students[j+1]);
+
+        void sortByPrice(){
+            for (int i = 0; i < size-1; ++i){
+                for (int j = 0; j < size - i - 1; ++j){
+                    if(cars[j].getPrice() > cars[j+1].getPrice()){
+                        swap(cars[j], cars[j+i]);
+                    }
+                }
+            }
+        }
+        
+        void sortByYear(){
+            for (int i = 0; i < size - 1; ++i){
+                for (int j = 0; j < size - i - 1; ++j){
+                    if(cars[j].getYear() > cars[j+1].getYear()){
+                        swap(cars[j], cars[j+1]);
                     }
                 }
             }
         }
 };
 
-class Menu
-{
+class Menu{
     private:
-        StudentList studentList;
+        CarList carList;
     public:
         void displayMenu(){
             int choice;
             do {
-                cout << "\n---Chon 1 trong cac lua chon sau---\n";
-                cout << "1. Them sinh vien\n";
-                cout << "2. Xoa sinh vien\n";
-                cout << "3. Xem danh sach sinh vien\n";
-                cout << "4. Sap xep sinh vien theo diem\n";
+                cout << "\n---Chon mot trong cac lua chon sau---\n";
+                cout << "1. Them mot mau xe\n";
+                cout << "2. Xoa mot mau xe\n";
+                cout << "3. Xem danh sach cac mau xe\n";
+                cout << "4. Sap xep cac mau xe theo gia\n";
+                cout << "5. Sap xep cac mau xe theo nam san xuat\n";
                 cout << "0. Thoat\n";
                 cout << "Nhap lua chon: ";
                 cin >> choice;
@@ -114,34 +130,42 @@ class Menu
                 switch (choice)
                 {
                     case 1:{
-                        Student s;
-                        cin >> s;
-                        studentList.addStudent(s);
+                        Car c;
+                        cin >> c;
+                        carList.addCar(c);
                         break;
                     }
                     case 2:{
-                        string studentID;
-                        cout << "Nhap ma sinh vien can xoa: ";
-                        cin >> studentID;
-                        studentList.removeStudent(studentID);
+                        string vin;
+                        cout << "Nhap so VIN cua xe can xoa: ";
+                        cin >> vin;
+                        carList.removeCar(vin);
                         break;
                     }
                     case 3:{
-                        studentList.display();
+                        carList.displayAll();
                         break;
                     }
                     case 4:{
-                        studentList.sortByPoint();
+                        carList.sortByPrice();
+                        cout << "Danh sach xe da sap xep theo gia: " << endl;
+                        carList.displayAll();
+                        break;
+                    }
+                    case 5:{
+                        carList.sortByYear();
+                        cout << "Danh sach xe da sap xep theo nam san xuat: " << endl;
+                        carList.displayAll();
                         break;
                     }
                     case 0:{
-                        cout << "Thoat chuong trinh...\n";
+                        cout << "Thoat chuong trinh.\n";
                         break;
                     }
                     default:
-                        cout << "Lua chon khong phu hop. Vui long thu lai.\n";
+                        cout << "Lua chon khong phu hop. Vui long thu lai.";
                 }
-            } while (choice != 0);
+            } while(choice != 0);
         }
 };
 int main(){
