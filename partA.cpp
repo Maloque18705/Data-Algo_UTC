@@ -34,7 +34,7 @@ class Car
             out << "Gia: " << c.price << endl;
             return out;
         }
-
+        void test();
         string getBrand() const {return brand; }
         string getModel() const {return model; }
         string getVIN() const {return vin; }
