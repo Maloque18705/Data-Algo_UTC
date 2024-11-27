@@ -1,0 +1,102 @@
+airplane: may bay
+ant: con kien
+apple: qua tao
+applepie: banh tao
+ball: qua bong
+banana: qua chuoi
+book: sach
+butterfly: buom
+candle: nen
+car: xe hoi
+cat: con meo
+chocolate: so co la
+cloud: may
+daisy: hoa cuc
+dog: con cho
+dolphin: ca heo
+duck: vit
+earth: trai dat
+eggplant: ca tim
+elephant: con voi
+engine: dong co
+fan: quat
+feather: long vu
+fish: con ca
+flower: hoa
+garden: vuon
+ghost: ma
+grape: qua nho
+guitar: dan guitar
+hat: cai mu
+hill: doi
+honey: mat ong
+house: ngoi nha
+ice: bang
+igloo: leu tuyet
+iron: sat
+island: dao
+jackal: cho rung
+jacket: ao khoac
+jewel: trang suc
+jungle: rung ram
+kangaroo: chuot tui
+key: chia khoa
+kite: dieu
+lamp: den
+leaf: la
+lemon: qua chanh
+lion: su tu
+mango: qua xoai
+monkey: con khi
+moon: mat trang
+mountain: ngon nui
+necklace: day chuyen
+nest: to
+night: ban dem
+notebook: quyen vo
+oak: cay soi
+octopus: bach tuoc
+orange: qua cam
+owl: con cu
+parrot: con vet
+pencil: but chi
+penguin: chim canh cut
+pizza: banh pizza
+queen: nu hoang
+question: cau hoi
+quilt: chan bong
+quiz: cau do
+rabbit: con tho
+river: con song
+rocket: ten lua
+rose: hoa hong
+snake: con ran
+star: ngoi sao
+strawberry: qua dau
+sun: mat troi
+table: cai ban
+television: tivi
+tiger: con ho
+train: xe lua
+umbrella: cai o
+uniform: dong phuc
+universe: vu tru
+vacuum: may hut bui
+vase: binh hoa
+violin: dan vi cam
+vulture: ken ken
+watermelon: qua dua hau
+wind: gio
+window: cua so
+wolf: soi
+x-ray: tia X
+xenon: khi xenon
+xylophone: dan phien go
+yacht: du thuyen
+yak: bo Tay Tang
+yard: san
+yarn: soi len
+zebra: con ngua van
+zipper: khoa keo
+zoo: so thu
+zucchini: bi ngoi
